@@ -1,5 +1,9 @@
-import myphoto from "./my-photo.jpg"
+// images
+import myphoto from "./my-photo.jpg";
+
 
 export const assets = {
   myphoto,
 };
+
+
