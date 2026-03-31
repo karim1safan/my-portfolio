@@ -1,16 +1,112 @@
-# React + Vite
+# Karim Mahmoud Safan Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive personal portfolio website built with React and Vite to showcase projects, skills, certifications, and contact information in a clean single-page experience.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is a frontend developer portfolio designed to present personal branding, recent work, technical skills, and achievements in a simple and modern layout. It includes scroll-triggered motion effects, project cards, certification highlights, and quick contact options.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Hero section with introduction, role, highlights, and CV download
+- About section with personal summary and profile cards
+- Services section to present offered frontend work
+- Skills section with technology cards
+- Projects section with featured work
+- Certifications section for achievements and credentials
+- Contact section with direct contact methods and a form layout
+- Scroll-based section reveal animations using `motion`
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 19
+- Vite
+- Motion
+- CSS
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone <your-repository-url>
+cd bukhari-hadith
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the development server
+
+```bash
+npm run dev
+```
+
+### 4. Build for production
+
+```bash
+npm run build
+```
+
+### 5. Preview the production build
+
+```bash
+npm run preview
+```
+
+## Project Structure
+
+```text
+src/
+  assets/                Static images, icons, and CV
+  components/            Portfolio sections and UI pieces
+  utils/                 Shared animation configuration
+  App.jsx                Main page composition
+```
+
+## Main Sections
+
+- `Home`: personal introduction and quick actions
+- `About`: short professional summary
+- `Services`: frontend services overview
+- `Skills`: core technologies and tools
+- `Projects`: selected portfolio work
+- `Certifications`: certificates and achievements
+- `Contact`: social/contact links and message form
+
+## Customization
+
+You can easily make this portfolio your own by editing:
+
+- `src/assets/assets.js` for images, CV, and asset references
+- `src/components/Projects/projects.js` for project content
+- `src/components/Certification/certificationsData.js` for certifications
+- section component files inside `src/components/` for text and layout
+
+## Notes
+
+- Some project demo and GitHub links are still empty in the current data files and can be updated before publishing.
+- The repository field in `package.json` is still a placeholder and should be replaced with the real GitHub URL.
+- The lint script currently expects an ESLint flat config file, so ESLint setup may need to be completed before using `npm run lint`.
+
+## Deployment
+
+This project can be deployed easily on platforms such as:
+
+- Vercel
+- Netlify
+- GitHub Pages
+
+For Vercel or Netlify, the default build settings are:
+
+- Build command: `npm run build`
+- Output directory: `dist`
+
+## Author
+
+Karim Mahmoud Safan
+
+Frontend Developer focused on building responsive and modern web interfaces.

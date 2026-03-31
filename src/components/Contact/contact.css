@@ -1,0 +1,128 @@
+.contact {
+  position: relative;
+  padding-bottom: 6rem;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.contact-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-option {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+}
+
+.contact-option:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-primary);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.contact-option-icon {
+  font-size: 2rem;
+  margin-bottom: 0.7rem;
+  color: var(--color-primary);
+}
+
+.contact-option h4 {
+  font-size: 1.1rem;
+}
+
+.contact-option h5 {
+  font-size: 0.9rem;
+  color: var(--color-light);
+  margin-bottom: 0.8rem;
+}
+
+.contact-option a {
+  font-size: 1rem;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  padding: 2rem;
+  border-radius: 1.5rem;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(10px);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 0.6rem;
+
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  color: var(--color-white);
+  font-size: 0.95rem;
+
+  transition: var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.contact-form ::placeholder {
+  color: var(--color-light);
+}
+
+.contact-form button {
+  align-self: flex-start;
+}
+
+@media (max-width: 1024px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-options {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .contact-option {
+    flex: 1 1 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-option {
+    flex: 1 1 100%;
+  }
+
+  .contact-form {
+    padding: 1.5rem;
+  }
+}
+

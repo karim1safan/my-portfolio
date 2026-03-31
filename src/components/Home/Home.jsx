@@ -1,14 +1,22 @@
 import React from "react";
 import { assets } from "../../assets/assets";
 import "./home.css";
-import HomeSocial from "./HomeSocial";
+import HomeSocial from "../Socials/Socials";
 import { FaArrowDown } from "react-icons/fa";
+import { motion } from "motion/react";
+import { itemMotion, sectionContentMotion, sectionMotion } from "../../utils/sectionMotion";
 
 function Home() {
   return (
-    <section className="home" id="home">
-      <div className="container home-container">
-        <div className="home-content">
+    <motion.section className="home" id="home" {...sectionMotion}>
+      <motion.div
+        className="container home-container"
+        variants={sectionContentMotion}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <motion.div className="home-content" variants={itemMotion}>
           <span className="home-eyebrow">Hello, I&apos;m</span>
           <h1>Karim Mahmoud Safan</h1>
           <h4 className="home-role">Frontend Developer</h4>
@@ -24,27 +32,27 @@ function Home() {
           </div>
 
           <div className="buttons">
-            <a href="#contact" className="btn btn-primary">
-              Let&apos;s Talk
+            <a href={assets.cv} className="btn btn-primary" download>
+              Download CV
             </a>
             <a href="#projects" className="btn">
               View Projects
             </a>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="image">
+        <motion.div className="image" variants={itemMotion}>
           <div className="image-card">
             <img src={assets.myphoto} alt="Karim Mahmoud Safan portrait" />
           </div>
           <HomeSocial />
-        </div>
+        </motion.div>
 
         <a href="#about" className="scroll-down">
           <FaArrowDown />
         </a>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 
