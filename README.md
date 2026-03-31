@@ -23,6 +23,8 @@ This project is a frontend developer portfolio designed to present personal bran
 - Vite
 - Motion
 - CSS
+- Toaster 
+- Web3forms
 
 ## Getting Started
 

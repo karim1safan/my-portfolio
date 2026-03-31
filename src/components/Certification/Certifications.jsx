@@ -1,3 +1,4 @@
+import React from "react";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import { certificationsData } from "./certificationsData";
 import "./certifications.css";
@@ -17,10 +18,15 @@ function Certifications() {
         viewport={{ once: true, amount: 0.2 }}
       >
         {certificationsData.map((cert) => (
-          <motion.article className="cert-card" key={cert.id} variants={itemMotion}>
-            <div className="cert-image">
+          <motion.article className="cert-card" key={cert.id} variants={itemMotion} whileHover={{
+            y: -10,
+            scale: 1.03,
+          }}
+          transition={{ type: "spring", stiffness: 200 }}>
+            <motion.div className="cert-image" whileHover={{ scale: 1.08 }}
+  transition={{ duration: 0.3 }}>
               <img src={cert.image} alt={cert.title} />
-            </div>
+            </motion.div>
 
             <h3>{cert.title}</h3>
             <p>{cert.issuer}</p>

@@ -99,3 +99,33 @@
 .cert-card a:hover {
   opacity: 0.8;
 }
+
+@media (max-width: 768px) {
+  .container-certification {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .certification {
+    padding: 3rem 0;
+  }
+
+  .container-certification {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-card {
+    padding: 0.9rem;
+  }
+
+  .cert-image {
+    height: 180px;
+  }
+
+  .cert-card a {
+    width: 100%;
+    text-align: center;
+  }
+}

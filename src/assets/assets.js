@@ -17,7 +17,8 @@ import linux from "./linux.svg"
 import typescript from "./typescript.svg";
 import npm from "./npm.svg";
 import sql from "./sql.svg";
-
+import sass from "./sass.svg";
+import bootstrap from "./bootstrap.svg"
 // Certifications icons
 import cs50b from "./certifications/CS50B.png"
 import manara_js from "./certifications/modern_js.png"
@@ -48,6 +49,8 @@ export const assets = {
   typescript,
   npm,
   sql,
+  sass,
+  bootstrap,
 
   cs50b,
   manara_react,

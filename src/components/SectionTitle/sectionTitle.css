@@ -20,4 +20,12 @@
   .section-title {
     margin-bottom: 2.5rem;
   }
+
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+
+  .section-title h5 {
+    font-size: 0.8rem;
+  }
 }

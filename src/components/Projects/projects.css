@@ -1,7 +1,7 @@
 /* ===== Container ===== */
 .projects-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
 }
 
@@ -94,4 +94,31 @@
 /* Button Hover */
 .project-buttons .btn:hover {
   opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-item-image img {
+    height: 180px;
+  }
+
+  .project-item-content {
+    padding: 14px 14px 10px;
+  }
+
+  .project-buttons {
+    flex-direction: column;
+    padding: 0 14px 14px;
+  }
+
+  .project-buttons .btn,
+  .project-buttons .btn-primary {
+    width: 100%;
+  }
 }

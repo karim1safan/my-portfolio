@@ -60,5 +60,24 @@ export const skills = [
     title: "SQL",
     icon: assets.sql,
     desc: "Database management",
+  },
+  {
+    id: 11,
+    title: "Sass",
+    icon: assets.sass,
+    desc: "CSS preprocessor",
+  },
+  {
+    id: 12,
+    title: "Linux",
+    icon: assets.linux,
+    desc: "Command line",
+  },
+  {
+    id: 13,
+    title: "Bootstrap",
+    icon: assets.bootstrap,
+    desc: "CSS framework",
   }
+
 ];

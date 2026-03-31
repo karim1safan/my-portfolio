@@ -1,11 +1,55 @@
+import React from "react";
 import { contactInfo } from "./contactInfo";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import "./contact.css";
 import { motion } from "motion/react";
-import { itemMotion, sectionContentMotion, sectionMotion } from "../../utils/sectionMotion";
+import {
+  itemMotion,
+  sectionContentMotion,
+  sectionMotion,
+} from "../../utils/sectionMotion";
+import { Toast } from "react-bootstrap";
+import toast from "react-hot-toast";
 
 function Contact() {
-  return (
+
+  const [result, setResult] = React.useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "58469ebd-1e08-43e9-8c8c-aa1c4db87ffb");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      toast('Message sent successfully!',
+        {
+          icon: '👏',
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        }
+      );
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
+  };
+
+
+  return (  
     <motion.section id="contact" className="contact" {...sectionMotion}>
       <SectionTitle subtitle="Get In Touch" title="Contact Me" />
       <motion.div
@@ -34,7 +78,7 @@ function Contact() {
         <motion.form
           className="contact-form"
           action=""
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={onSubmit}
           variants={itemMotion}
         >
           <input type="text" name="name" placeholder="Full Name..." required />

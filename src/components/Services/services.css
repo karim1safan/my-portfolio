@@ -46,3 +46,14 @@
   line-height: 1.5;
   font-size: 0.95rem;
 }
+
+@media (max-width: 600px) {
+  .container-services {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .container-services > div {
+    padding: 1.2rem;
+  }
+}

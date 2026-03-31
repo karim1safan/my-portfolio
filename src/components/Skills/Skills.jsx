@@ -1,3 +1,4 @@
+import React from "react";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import "./skills.css";
 import { skills } from "./skills";
@@ -17,10 +18,13 @@ function Skills() {
         viewport={{ once: true, amount: 0.2 }}
       >
         {skills.map((skill) => (
-          <motion.article className="skill-card" key={skill.id} variants={itemMotion}>
-            <div className="icon">
+          <motion.article className="skill-card" key={skill.id} variants={itemMotion} whileHover={{
+            scale: 1.05,
+            y:-8
+          }}>
+            <motion.div className="icon" whileHover={{ rotate: 10, scale:1.1}} transition={{type:"spring", stiffness: 200}}>
               <img src={skill.icon} alt={skill.title} />
-            </div>
+            </motion.div>
             <div className="content">
               <h4>{skill.title}</h4>
               <p className="text-light">{skill.desc}</p>
