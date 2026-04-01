@@ -8,7 +8,6 @@ import {
   sectionContentMotion,
   sectionMotion,
 } from "../../utils/sectionMotion";
-import { Toast } from "react-bootstrap";
 import toast from "react-hot-toast";
 
 function Contact() {
