@@ -57,5 +57,13 @@ export const certificationsData = [
     year: "31/05/2024",
     image: assets.ood,
     link: "https://coursera.org/share/862206941927385a697f1c329a247a93",
+  },
+  {
+    id: 8,
+    title: "JavaScript APIs",
+    issuer: "udemy",
+    year: "13/08/2025",
+    image: assets.certificate1,
+    link: "https://www.udemy.com/certificate/UC-7dc8924b-2e43-450a-8db0-a65f03c97168/",
   }
 ];

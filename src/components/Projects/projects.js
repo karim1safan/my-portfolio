@@ -23,8 +23,17 @@ export const projects = [
     title: "agency website",
     image: assets.project3,
     desc: "Creative agency website with Dark Mode",
-    tech: ["HTML5", "CSS3", "ReactJS", "Tailwind CSS"],
-    live: "",
-    github: "",
+    tech: ["HTML5", "CSS3", "ReactJS", "Tailwind", "Motion", "Web3Forms"],
+    live: "https://agenct-ai.netlify.app/",
+    github: "https://github.com/karim1safan/agency.ai",
+  },
+  {
+    id: 6,
+    title: "Todo List App",
+    image: assets.project6,
+    desc: "A simple todo list app built with ReactJS with Local Storage",
+    tech: ["HTML5", "CSS3", "JavaScript"],
+    live: "https://react-todo-app-tasks.netlify.app/",
+    github: "https://github.com/karim1safan/React-Todo-App",
   }
 ];
