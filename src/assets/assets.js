@@ -34,6 +34,8 @@ import certificate1 from "./certifications/certificate1.png"
 import project1 from "./projects/project1.png"
 import project2 from "./projects/project2.png";
 import project3 from "./projects/project3.png";
+import project4 from "./projects/project4.png"
+import project5 from "./projects/project5.png"
 import project6 from "./projects/project6.png";
 
 export const assets = {
@@ -73,4 +75,6 @@ export const assets = {
   project2,
   project3,
   project6,
+  project4,
+  project5
 };
