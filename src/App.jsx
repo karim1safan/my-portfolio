@@ -1,46 +1,42 @@
-import React from "react";
-import Home from "./components/Home/Home";
-import Navbar from "./components/Navbar/Navbar";
-import About from "./components/About/About";
-import Skills from "./components/Skills/Skills";
-import Projects from "./components/Projects/Projects";
-import Contact from "./components/Contact/Contact";
-import Footer from "./components/Footer/Footer";
-import Certifications from "./components/Certification/Certifications";
-import Services from "./components/Services/Services";
+import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import Certifications from "./components/Certifications";
+import Services from "./components/Services";
 import { Toaster } from "react-hot-toast";
-
-import { motion, useScroll } from "motion/react";
+import { ThemeProvider } from "./context/ThemeContext";
+import BackToTop from "./components/BackToTop";
 
 function App() {
-  const { scrollYProgress } = useScroll();
   return (
-    <>
-      <motion.div
-        id="scroll-indicator"
-        style={{
-          scaleX: scrollYProgress,
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 10,
-          originX: 0,
-          backgroundColor: "#ff0088",
-          zIndex: 9999,
+    <ThemeProvider>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: "var(--toast-bg, #333)",
+            color: "var(--toast-color, #fff)",
+          },
         }}
       />
-      <Toaster reverseOrder={true} />
       <Navbar />
-      <Home />
-      <About />
-      <Services />
-      <Skills />
-      <Projects />
-      <Certifications />
-      <Contact />
+      <main>
+        <BackToTop />
+        <Hero />
+        <About />
+        <Services />
+        <Skills />
+        <Projects />
+        <Certifications />
+        <Contact />
+      </main>
       <Footer />
-    </>
+    </ThemeProvider>
   );
 }
 
