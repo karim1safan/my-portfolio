@@ -12,6 +12,7 @@ import certificate11 from "../assets/certificates/node-js-v3.png";
 import certificate12 from "../assets/certificates/tailwind-css-v2.png";
 import certificate13 from "../assets/certificates/complete-react-v9.png";
 import certificate14 from "../assets/certificates/AWSAcademy.png";
+
 export const certificationsData = [
   {
     title: "complete-react-v9",

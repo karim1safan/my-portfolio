@@ -11,6 +11,9 @@ import sql from "../assets/skills/sql.svg";
 import sass from "../assets/skills/sass.svg";
 import linux from "../assets/skills/linux.svg";
 import bootstrap from "../assets/skills/bootstrap.svg";
+import nodejs from "../assets/skills/nodejs.svg";
+import vite from "../assets/skills/vite.svg";
+import postman from "../assets/skills/postman.svg";
 
 export const skills = [
   {
@@ -77,5 +80,20 @@ export const skills = [
     title: "Bootstrap",
     icon: bootstrap,
     desc: "CSS framework",
+  },
+  {
+    title: "Node.js",
+    icon: nodejs,
+    desc: "Backend runtime",
+  },
+  {
+    title: "Vite",
+    icon: vite,
+    desc: "Build tool",
+  },
+  {
+    title: "Postman",
+    icon: postman,
+    desc: "API testing",
   },
 ];

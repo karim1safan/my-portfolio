@@ -42,7 +42,7 @@ function Projects() {
             <motion.article
               key={project.title}
               variants={item}
-              className="group overflow-hidden rounded-2xl border border-surface-200 bg-white transition-all hover:-translate-y-1 hover:shadow-lg dark:border-surface-dark-500 dark:bg-surface-dark-700"
+              className="group overflow-hidden rounded-2xl border border-surface-200 bg-white transition-all hover:-translate-y-1 hover:border-primary-500/20 hover:shadow-lg dark:border-surface-dark-500 dark:bg-surface-dark-700"
             >
               <div className="overflow-hidden bg-surface-100 dark:bg-surface-dark-600">
                 <div className="flex items-center gap-1.5 border-b border-surface-200 bg-surface-200/50 px-3 py-2 dark:border-surface-dark-500 dark:bg-surface-dark-700">
@@ -121,9 +121,10 @@ function Projects() {
               onClick={() => {
                 setShowAll(!showAll);
                 if (showAll) {
-                  document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
+              aria-expanded={showAll}
               className="cursor-pointer rounded-full border border-surface-300 bg-white px-6 py-2.5 text-sm font-medium text-surface-700 transition-colors hover:bg-surface-100 dark:border-surface-dark-500 dark:bg-surface-dark-800 dark:text-surface-dark-200 dark:hover:bg-surface-dark-700"
             >
               {showAll ? "Show Less" : `Show All (${projects.length})`}

@@ -3,9 +3,7 @@ import { GiAchievement } from "react-icons/gi";
 import { FaPeopleGroup, FaCode } from "react-icons/fa6";
 import SectionTitle from "./SectionTitle";
 import Reveal from "./Reveal";
-import myphoto from "../assets/my_photo.jpg";
-import { useState, useRef } from "react";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { useRef } from "react";
 
 const aboutCards = [
   {
@@ -42,35 +40,22 @@ const cardItem = {
 };
 
 function About() {
-  const [showMore, setShowMore] = useState(false);
   const textRef = useRef(null);
   const textInView = useInView(textRef, { once: true, margin: "-40px" });
-
-  const toggleShowMore = () => {
-    setShowMore(!showMore);
-  };
 
   return (
     <section id="about" className="py-20">
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle subtitle="Get to Know" title="About Me" />
 
-        <div className="flex flex-col items-center gap-12 lg:flex-row">
-          <Reveal className="w-full lg:w-1/2">
-            <div className="relative mx-auto max-w-sm">
-              <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-primary-400 to-primary-600 opacity-10 blur-lg dark:opacity-20" />
-              <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-2xl border border-surface-200 bg-surface-100 dark:border-surface-dark-500 dark:bg-surface-dark-700">
-                <img
-                  src={myphoto}
-                  alt="Karim Mahmoud Safan"
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </div>
+        <div className="mx-auto max-w-3xl">
+          <Reveal>
+            <div className="mx-auto mb-10 flex justify-center">
+              <div className="h-1 w-16 rounded-full bg-gradient-to-r from-primary-400 to-primary-600" />
             </div>
           </Reveal>
 
-          <div className="w-full lg:w-1/2">
+          <div>
             <Reveal>
               <span className="mb-4 inline-block rounded-full bg-primary-100 px-4 py-1.5 text-sm font-medium text-primary-700 dark:bg-primary-500/10 dark:text-primary-400">
                 Frontend Developer
@@ -90,10 +75,10 @@ function About() {
                   <motion.div
                     key={item.id}
                     variants={cardItem}
-                    className="rounded-xl border border-surface-200 bg-white p-4 text-center dark:border-surface-dark-500 dark:bg-surface-dark-800"
+                    className="rounded-xl border border-surface-200 bg-white p-6 text-center transition-all hover:scale-105 hover:border-primary-500/30 hover:shadow-md dark:border-surface-dark-500 dark:bg-surface-dark-800 dark:hover:border-primary-500/30"
                   >
-                    <Icon className="mx-auto mb-2 text-2xl text-primary-600 dark:text-primary-400" />
-                    <h5 className="font-display text-sm font-semibold text-surface-900 dark:text-surface-dark-50">
+                    <Icon className="mx-auto mb-3 text-3xl text-primary-600 dark:text-primary-400" />
+                    <h5 className="font-display text-base font-semibold text-surface-900 dark:text-surface-dark-50">
                       {item.title}
                     </h5>
                     <small className="text-xs text-surface-500 dark:text-surface-dark-300">
@@ -115,31 +100,19 @@ function About() {
                 Frontend Developer specializing in building modern, responsive, and interactive web
                 applications using React.js and modern frontend technologies. Passionate about
                 creating clean user experiences, writing maintainable code, and continuously
-                improving application performance and architecture.{" "}
-                <button
-                  onClick={toggleShowMore}
-                  className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 transition-colors hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
-                >
-                  {showMore ? "Show Less" : "Read More"}
-                  {showMore ? <FiChevronUp size={16} /> : <FiChevronDown size={16} />}
-                </button>
+                improving application performance and architecture.
               </p>
-
-              {showMore && (
-                <div className="mt-4 space-y-4">
-                  <p>
-                    Experienced with JavaScript, React, Express.js, Linux environments, and modern
-                    development workflows. My background in competitive programming has strengthened
-                    my analytical thinking and debugging abilities, helping me solve complex
-                    problems efficiently.
-                  </p>
-                  <p>
-                    Currently focused on growing as a software engineer, expanding into cloud
-                    technologies, and contributing to impactful products within collaborative
-                    engineering teams.
-                  </p>
-                </div>
-              )}
+              <p className="mt-4">
+                Experienced with JavaScript, React, Express.js, Linux environments, and modern
+                development workflows. My background in competitive programming has strengthened
+                my analytical thinking and debugging abilities, helping me solve complex
+                problems efficiently.
+              </p>
+              <p className="mt-4">
+                Currently focused on growing as a software engineer, expanding into cloud
+                technologies, and contributing to impactful products within collaborative
+                engineering teams.
+              </p>
             </motion.div>
 
             <Reveal delay={0.4}>

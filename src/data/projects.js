@@ -5,6 +5,7 @@ import NotesDashboard from "../assets/projects/NotesDashboard.png";
 import GithubApp from "../assets/projects/GithubApp.png";
 import bondi from "../assets/projects/bondi.png";
 import leon from "../assets/projects/Leon.png";
+import shoppingCart from "../assets/projects/shopping-cart.png";
 
 export const projects = [
   {
@@ -48,6 +49,14 @@ export const projects = [
     githubUrl: "https://github.com/karim1safan/github-app",
   },
   {
+    title: "Shopping Cart",
+    thumbnail: shoppingCart,
+    description: "",
+    technologies: ["HTML5", "CSS3", "JavaScript", "FontAwesome"],
+    liveUrl: "https://shopping-cart-neon-tau-50.vercel.app/",
+    githubUrl: "https://github.com/karim1safan/shopping-cart",
+  },
+  {
     title: "Bondi Template Design",
     thumbnail: bondi,
     description: "",
@@ -60,7 +69,7 @@ export const projects = [
     thumbnail: leon,
     description: "",
     technologies: ["HTML5", "CSS3"],
-    liveUrl: "https://github.com/karim1safan/Leon-Template-One",
-    githubUrl: "https://karim1safan.github.io/Leon-Template-One/",
+    liveUrl: "https://karim1safan.github.io/Leon-Template-One/",
+    githubUrl: "https://github.com/karim1safan/Leon-Template-One",
   },
 ];

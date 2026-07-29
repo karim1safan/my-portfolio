@@ -102,7 +102,7 @@ function Certifications() {
             <motion.article
               key={cert.title}
               variants={item}
-              className="group overflow-hidden rounded-2xl border border-surface-200 bg-white transition-all hover:-translate-y-1 hover:shadow-lg dark:border-surface-dark-500 dark:bg-surface-dark-800"
+              className="group overflow-hidden rounded-2xl border border-surface-200 bg-white transition-all hover:-translate-y-1 hover:shadow-xl hover:ring-2 hover:ring-primary-500/20 dark:border-surface-dark-500 dark:bg-surface-dark-800"
             >
               <div
                 className="aspect-[4/3] cursor-pointer overflow-hidden bg-surface-100 dark:bg-surface-dark-600"
@@ -164,9 +164,10 @@ function Certifications() {
               onClick={() => {
                 setShowAll(!showAll);
                 if (showAll) {
-                  document.getElementById("certifications")?.scrollIntoView({ behavior: "smooth" });
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
+              aria-expanded={showAll}
               className="rounded-full border border-surface-300 bg-white px-6 py-2.5 text-sm font-medium text-surface-700 transition-colors hover:bg-surface-100 dark:border-surface-dark-500 dark:bg-surface-dark-800 dark:text-surface-dark-200 dark:hover:bg-surface-dark-700 cursor-pointer"
             >
               {showAll ? "Show Less" : `Show All (${certificationsData.length})`}

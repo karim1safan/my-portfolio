@@ -32,7 +32,7 @@ function Skills() {
             <motion.div
               key={skill.title}
               variants={item}
-              className="group flex flex-col items-center gap-3 rounded-xl border border-surface-200 bg-white p-5 transition-all hover:-translate-y-1 hover:border-primary-500/30 hover:shadow-md dark:border-surface-dark-500 dark:bg-surface-dark-800 dark:hover:border-primary-500/30"
+              className="group flex flex-col items-center gap-3 rounded-xl border border-surface-200 bg-white p-5 transition-all hover:scale-105 hover:border-primary-500/50 hover:shadow-md dark:border-surface-dark-500 dark:bg-surface-dark-800 dark:hover:border-primary-500/50"
             >
               <div className="flex h-12 w-12 items-center justify-center">
                 <img src={skill.icon} alt={skill.title} loading="lazy" className="h-full w-full object-contain" />
