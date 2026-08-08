@@ -21,7 +21,8 @@ export const projects = [
     thumbnail: HerbexCare,
     description: "",
     technologies: ["HTML5", "Tailwindcss", "ReactJS", "React Router"],
-    liveUrl: "https://frontend-herbex-care-4i4x-5fzab1f5x-karim1safans-projects.vercel.app/",
+    liveUrl:
+      "https://frontend-herbex-care-4i4x-5fzab1f5x-karim1safans-projects.vercel.app/",
     githubUrl: "https://github.com/Herbal-Organization/Frontend-HerbexCare",
   },
   {

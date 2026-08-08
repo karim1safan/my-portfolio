@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import SectionTitle from "./SectionTitle";
 import toast from "react-hot-toast";
 
 import { BsWhatsapp } from "react-icons/bs";
 import { MdMarkEmailUnread } from "react-icons/md";
+import { FiLoader, FiSend } from "react-icons/fi";
 
 export const contactInfo = [
   {
@@ -23,31 +25,39 @@ export const contactInfo = [
 ];
 
 function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const onSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
+    setIsSubmitting(true);
 
+    const formData = new FormData(event.target);
     formData.append("access_key", import.meta.env.VITE_WEB3FORMS_KEY);
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      toast("Message sent successfully!", {
-        icon: "\ud83d\udc4f",
-        style: {
-          borderRadius: "10px",
-          background: "var(--toast-bg, #333)",
-          color: "var(--toast-color, #fff)",
-        },
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
       });
-      event.target.reset();
-    } else {
+      const data = await response.json();
+
+      if (data.success) {
+        toast("Message sent successfully!", {
+          icon: "\ud83d\udc4f",
+          style: {
+            borderRadius: "10px",
+            background: "var(--toast-bg, #333)",
+            color: "var(--toast-color, #fff)",
+          },
+        });
+        event.target.reset();
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch {
       toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -108,7 +118,7 @@ function Contact() {
               id="name"
               type="text"
               name="name"
-              placeholder="Full Name..."
+              placeholder="Full Name…"
               required
               className="rounded-xl border border-surface-200 bg-surface-50 px-4 py-3 text-sm text-surface-900 outline-none transition-colors focus:border-primary-500 dark:border-surface-dark-500 dark:bg-surface-dark-800 dark:text-surface-dark-50 dark:focus:border-primary-400"
             />
@@ -117,7 +127,7 @@ function Contact() {
               id="email"
               type="email"
               name="email"
-              placeholder="Your Email..."
+              placeholder="Your Email…"
               required
               className="rounded-xl border border-surface-200 bg-surface-50 px-4 py-3 text-sm text-surface-900 outline-none transition-colors focus:border-primary-500 dark:border-surface-dark-500 dark:bg-surface-dark-800 dark:text-surface-dark-50 dark:focus:border-primary-400"
             />
@@ -125,16 +135,27 @@ function Contact() {
             <textarea
               id="message"
               name="message"
-              placeholder="Your Message..."
+              placeholder="Your Message…"
               rows="5"
               required
               className="resize-none rounded-xl border border-surface-200 bg-surface-50 px-4 py-3 text-sm text-surface-900 outline-none transition-colors focus:border-primary-500 dark:border-surface-dark-500 dark:bg-surface-dark-800 dark:text-surface-dark-50 dark:focus:border-primary-400"
             />
             <button
               type="submit"
-              className="rounded-xl bg-primary-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600"
+              disabled={isSubmitting}
+              className="flex items-center justify-center gap-2 rounded-xl bg-primary-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-primary-500 dark:hover:bg-primary-600"
             >
-              Send Message
+              {isSubmitting ? (
+                <>
+                  <FiLoader className="animate-spin" size={16} />
+                  Sending…
+                </>
+              ) : (
+                <>
+                  <FiSend size={16} />
+                  Send Message
+                </>
+              )}
             </button>
           </motion.form>
         </div>

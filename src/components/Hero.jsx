@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { FaArrowDown, FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { FiDownload } from "react-icons/fi";
 import myphoto from "../assets/my_photo.jpg";
@@ -27,36 +27,38 @@ const imageReveal = {
 };
 
 function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section id="home" className="flex min-h-[calc(100vh-var(--navbar-height))] items-center">
       <div className="mx-auto w-full max-w-6xl px-4 py-16">
         <div className="flex flex-col items-center gap-12 lg:flex-row lg:justify-between">
           <motion.div
             className="max-w-xl text-center lg:text-left"
-            variants={container}
-            initial="hidden"
-            animate="visible"
+            variants={shouldReduceMotion ? undefined : container}
+            initial={shouldReduceMotion ? false : "hidden"}
+            animate={shouldReduceMotion ? undefined : "visible"}
           >
             <motion.span
-              variants={item}
+              variants={shouldReduceMotion ? undefined : item}
               className="mb-4 inline-block rounded-full bg-primary-100 px-4 py-1.5 text-sm font-medium text-primary-700 dark:bg-primary-500/10 dark:text-primary-400"
             >
               Hello, I&apos;m
             </motion.span>
             <motion.h1
-              variants={item}
+              variants={shouldReduceMotion ? undefined : item}
               className="font-display text-4xl font-bold tracking-tight text-surface-900 dark:text-surface-dark-50 sm:text-5xl lg:text-6xl"
             >
               Karim Mahmoud Safan
             </motion.h1>
             <motion.h2
-              variants={item}
+              variants={shouldReduceMotion ? undefined : item}
               className="mt-3 font-display text-xl font-medium text-primary-600 dark:text-primary-400 sm:text-2xl"
             >
               Frontend Developer
             </motion.h2>
             <motion.p
-              variants={item}
+              variants={shouldReduceMotion ? undefined : item}
               className="mt-6 text-lg leading-relaxed text-surface-600 dark:text-surface-dark-200"
             >
               I build responsive, modern web experiences with a clean eye for layout, motion, and
@@ -64,7 +66,7 @@ function Hero() {
             </motion.p>
 
             <motion.div
-              variants={item}
+              variants={shouldReduceMotion ? undefined : item}
               className="mt-6 flex flex-wrap justify-center gap-2 lg:justify-start"
             >
               {["React", "JavaScript", "UI Focused"].map((tag) => (
@@ -78,7 +80,7 @@ function Hero() {
             </motion.div>
 
             <motion.div
-              variants={item}
+              variants={shouldReduceMotion ? undefined : item}
               className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start"
             >
               <a
@@ -107,9 +109,9 @@ function Hero() {
 
           <motion.div
             className="flex flex-col items-center gap-4"
-            variants={imageReveal}
-            initial="hidden"
-            animate="visible"
+            variants={shouldReduceMotion ? undefined : imageReveal}
+            initial={shouldReduceMotion ? false : "hidden"}
+            animate={shouldReduceMotion ? undefined : "visible"}
           >
             <div className="relative">
               <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 opacity-20 blur-lg dark:opacity-30" />
@@ -156,10 +158,10 @@ function Hero() {
 
         <motion.a
           href="#about"
-          className="mx-auto mt-16 flex w-fit animate-bounce items-center gap-2 text-sm text-surface-500 dark:text-surface-dark-300"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4, duration: 0.6 }}
+          className={`mx-auto mt-16 flex w-fit items-center gap-2 text-sm text-surface-500 dark:text-surface-dark-300 ${shouldReduceMotion ? "" : "animate-bounce"}`}
+          initial={shouldReduceMotion ? false : { opacity: 0 }}
+          animate={shouldReduceMotion ? undefined : { opacity: 1 }}
+          transition={shouldReduceMotion ? undefined : { delay: 1.4, duration: 0.6 }}
         >
           <FaArrowDown />
           <span>Scroll down</span>

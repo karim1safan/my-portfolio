@@ -1,43 +1,17 @@
 import { motion, useInView } from "motion/react";
-import { GiAchievement } from "react-icons/gi";
-import { FaPeopleGroup, FaCode } from "react-icons/fa6";
+import { PiGraduationCap } from "react-icons/pi";
 import SectionTitle from "./SectionTitle";
 import Reveal from "./Reveal";
 import { useRef } from "react";
 
-const aboutCards = [
+const education = [
   {
     id: 1,
-    title: "Learning Journey",
-    desc: "Self-taught & always learning",
-    icon: GiAchievement,
-  },
-  {
-    id: 2,
-    title: "Practice",
-    desc: "Building real-world projects",
-    icon: FaPeopleGroup,
-  },
-  {
-    id: 3,
-    title: "Projects",
-    desc: "30+ completed projects",
-    icon: FaCode,
+    degree: "B.Sc. in Computer Science",
+    university: "Menofia University",
+    year: "2022 – 2026",
   },
 ];
-
-const cardContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-  },
-};
-
-const cardItem = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
 
 function About() {
   const textRef = useRef(null);
@@ -63,38 +37,11 @@ function About() {
             </Reveal>
 
             <motion.div
-              className="mb-6 grid grid-cols-3 gap-3"
-              variants={cardContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-40px" }}
-            >
-              {aboutCards.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <motion.div
-                    key={item.id}
-                    variants={cardItem}
-                    className="rounded-xl border border-surface-200 bg-white p-6 text-center transition-all hover:scale-105 hover:border-primary-500/30 hover:shadow-md dark:border-surface-dark-500 dark:bg-surface-dark-800 dark:hover:border-primary-500/30"
-                  >
-                    <Icon className="mx-auto mb-3 text-3xl text-primary-600 dark:text-primary-400" />
-                    <h5 className="font-display text-base font-semibold text-surface-900 dark:text-surface-dark-50">
-                      {item.title}
-                    </h5>
-                    <small className="text-xs text-surface-500 dark:text-surface-dark-300">
-                      {item.desc}
-                    </small>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-
-            <motion.div
               ref={textRef}
               className="mb-8 leading-relaxed text-surface-600 dark:text-surface-dark-200"
               initial={{ opacity: 0, y: 20 }}
               animate={textInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <p>
                 Frontend Developer specializing in building modern, responsive, and interactive web
@@ -114,6 +61,34 @@ function About() {
                 engineering teams.
               </p>
             </motion.div>
+
+            <Reveal delay={0.3}>
+              <div className="mb-8">
+                <h3 className="mb-4 font-display text-lg font-semibold text-surface-900 dark:text-surface-dark-50">
+                  Education
+                </h3>
+                <div className="relative border-l-2 border-primary-200 pl-6 dark:border-primary-500/30">
+                  {education.map((item) => (
+                    <div key={item.id} className="relative mb-6 last:mb-0 ml-3">
+                      <div className="absolute -left-[31px] flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/10 dark:text-primary-400">
+                        <PiGraduationCap size={16} />
+                      </div>
+                      <div>
+                        <h4 className="font-display text-base font-semibold text-surface-900 dark:text-surface-dark-50">
+                          {item.degree}
+                        </h4>
+                        <p className="text-sm text-surface-600 dark:text-surface-dark-200">
+                          {item.university}
+                        </p>
+                        <small className="text-xs text-surface-500 dark:text-surface-dark-300">
+                          {item.year}
+                        </small>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
 
             <Reveal delay={0.4}>
               <a

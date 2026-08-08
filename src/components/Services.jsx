@@ -1,77 +1,82 @@
-import { motion } from "motion/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
+import { useRef } from "react";
 import SectionTitle from "./SectionTitle";
-import { FaCode } from "react-icons/fa6";
-import { IoRocketSharp } from "react-icons/io5";
-import { MdDesignServices } from "react-icons/md";
 
-export const servicesData = [
+const steps = [
   {
     id: 1,
-    icon: MdDesignServices,
-    title: "Web Design",
-    desc: "Crafting responsive, accessible interfaces focused on usability and visual impact.",
+    number: "01",
+    title: "Discover",
+    desc: "Understand the problem, user needs, and technical constraints before writing a single line.",
   },
   {
     id: 2,
-    icon: IoRocketSharp,
-    title: "Fast Performance",
-    desc: "Optimizing load times and runtime speed for smooth user experiences across devices.",
+    number: "02",
+    title: "Design",
+    desc: "Plan component architecture, data flow, and UI structure. Sketch key screens and interactions.",
   },
   {
     id: 3,
-    icon: FaCode,
-    title: "Clean Code",
-    desc: "Writing maintainable, modular React code with best practices and solid architecture.",
+    number: "03",
+    title: "Develop",
+    desc: "Build incrementally with clean, modular code. Test as I go, not after.",
+  },
+  {
+    id: 4,
+    number: "04",
+    title: "Deliver",
+    desc: "Optimize, polish, and deploy. Ensure performance, accessibility, and responsiveness are solid.",
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
-  },
-};
+function StepCard({ step, index }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const shouldReduceMotion = useReducedMotion();
 
-const item = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
+  return (
+    <motion.div
+      ref={ref}
+      className="relative flex gap-6"
+      initial={shouldReduceMotion ? false : { opacity: 0, x: -30 }}
+      animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+      transition={{
+        duration: shouldReduceMotion ? 0 : 0.5,
+        delay: shouldReduceMotion ? 0 : index * 0.15,
+        ease: "easeOut",
+      }}
+    >
+      <div className="flex flex-col items-center">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-100 font-display text-lg font-bold text-primary-600 dark:bg-primary-500/10 dark:text-primary-400">
+          {step.number}
+        </div>
+        {index < steps.length - 1 && (
+          <div className="mt-2 w-0.5 flex-1 bg-gradient-to-b from-primary-200 to-transparent dark:from-primary-500/30" />
+        )}
+      </div>
+      <div className="pb-8">
+        <h3 className="font-display text-lg font-semibold text-surface-900 dark:text-surface-dark-50">
+          {step.title}
+        </h3>
+        <p className="mt-1 text-sm leading-relaxed text-surface-600 dark:text-surface-dark-200">
+          {step.desc}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
 
 function Services() {
   return (
     <section id="services" className="bg-surface-100 py-20 dark:bg-surface-dark-800">
       <div className="mx-auto max-w-6xl px-4">
-        <SectionTitle title="Services" />
+        <SectionTitle subtitle="My Process" title="How I Work" />
 
-        <motion.div
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
-        >
-          {servicesData.map((service) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={service.id}
-                variants={item}
-                className="group rounded-2xl border border-surface-200 bg-white p-8 transition-all hover:-translate-y-1 hover:shadow-lg dark:border-surface-dark-500 dark:bg-surface-dark-700 dark:hover:border-primary-500/30"
-              >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-100 text-primary-600 transition-colors group-hover:bg-primary-600 group-hover:text-white dark:bg-primary-500/10 dark:text-primary-400 dark:group-hover:bg-primary-500 dark:group-hover:text-white">
-                  <Icon size={22} />
-                </div>
-                <h3 className="mb-2 font-display text-lg font-semibold text-surface-900 dark:text-surface-dark-50">
-                  {service.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-surface-600 dark:text-surface-dark-200">
-                  {service.desc}
-                </p>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+        <div className="mx-auto max-w-2xl">
+          {steps.map((step, index) => (
+            <StepCard key={step.id} step={step} index={index} />
+          ))}
+        </div>
       </div>
     </section>
   );

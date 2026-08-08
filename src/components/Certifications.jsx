@@ -170,7 +170,7 @@ function Certifications() {
               aria-expanded={showAll}
               className="rounded-full border border-surface-300 bg-white px-6 py-2.5 text-sm font-medium text-surface-700 transition-colors hover:bg-surface-100 dark:border-surface-dark-500 dark:bg-surface-dark-800 dark:text-surface-dark-200 dark:hover:bg-surface-dark-700 cursor-pointer"
             >
-              {showAll ? "Show Less" : `Show All (${certificationsData.length})`}
+              {showAll ? "Show Less" : "Show All"}
             </button>
           </motion.div>
         )}

@@ -18,7 +18,7 @@ import {
 const navLinks = [
   { label: "Home", href: "#home", icon: FiHome },
   { label: "About", href: "#about", icon: FiUser },
-  { label: "Services", href: "#services", icon: FiTool },
+  { label: "Process", href: "#services", icon: FiTool },
   { label: "Skills", href: "#skills", icon: FiCode },
   { label: "Projects", href: "#projects", icon: FiFolder },
   { label: "Certifications", href: "#certifications", icon: FiAward },
@@ -82,10 +82,20 @@ function Navbar() {
         <div className="flex items-center gap-2">
           <button
             onClick={toggleTheme}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-surface-600 transition-colors hover:bg-surface-200 dark:text-surface-dark-200 dark:hover:bg-surface-dark-500"
+            className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full text-surface-600 transition-colors hover:bg-surface-200 dark:text-surface-dark-200 dark:hover:bg-surface-dark-500"
             aria-label="Toggle theme"
           >
-            {theme === "dark" ? <FiSun size={18} /> : <FiMoon size={18} />}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={theme}
+                initial={{ rotate: -90, scale: 0, opacity: 0 }}
+                animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                exit={{ rotate: 90, scale: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                {theme === "dark" ? <FiSun size={18} /> : <FiMoon size={18} />}
+              </motion.div>
+            </AnimatePresence>
           </button>
 
           <button
