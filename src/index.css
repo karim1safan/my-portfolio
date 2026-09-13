@@ -5,6 +5,7 @@
 @theme {
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Outfit", sans-serif;
+  --font-arabic: "Cairo", sans-serif;
 
   --color-primary-50: #fffbeb;
   --color-primary-100: #fef3c7;
@@ -86,5 +87,43 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  .prose-custom {
+    @apply space-y-6 leading-relaxed text-surface-700 dark:text-surface-dark-200;
+  }
+  .prose-custom h2 {
+    @apply mt-10 mb-4 font-display text-xl font-bold text-surface-900 dark:text-surface-dark-50;
+  }
+  .prose-custom p {
+    @apply text-[15px];
+  }
+  .prose-custom pre {
+    @apply my-6 overflow-x-auto rounded-xl border border-surface-200 bg-surface-900 p-4 text-sm dark:border-surface-dark-500 dark:bg-surface-dark-800;
+  }
+  .prose-custom code {
+    @apply font-mono text-primary-700 dark:text-primary-400;
+  }
+  .prose-custom pre code {
+    @apply text-surface-100 dark:text-surface-dark-100;
+  }
+  .prose-custom p code {
+    @apply rounded bg-surface-200 px-1.5 py-0.5 text-[13px] dark:bg-surface-dark-600;
+  }
+
+  .article-rtl {
+    direction: rtl;
+    text-align: start;
+  }
+
+  .article-rtl pre {
+    direction: ltr;
+    text-align: left;
+  }
+
+  .article-rtl code {
+    direction: ltr;
   }
 }
