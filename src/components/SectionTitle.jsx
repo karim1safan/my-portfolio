@@ -9,7 +9,7 @@ function SectionTitle({ subtitle, title }) {
             {subtitle}
           </span>
         )}
-        <h2 className="font-display text-3xl font-bold tracking-tight text-surface-900 dark:text-surface-dark-50 sm:text-4xl">
+        <h2 className="font-arabic text-3xl font-bold tracking-tight text-surface-900 dark:text-surface-dark-50 sm:text-4xl">
           {title}
         </h2>
       </div>

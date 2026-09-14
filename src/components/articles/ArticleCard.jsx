@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { FiClock, FiArrowLeft } from "react-icons/fi";
+import { FaBook } from "react-icons/fa6";
 
 function ArticleCard({ article }) {
   return (
@@ -11,7 +12,7 @@ function ArticleCard({ article }) {
       }}
       className="group flex flex-col overflow-hidden rounded-2xl border border-surface-200 bg-white transition-all hover:-translate-y-1 hover:border-primary-500/20 hover:shadow-lg dark:border-surface-dark-500 dark:bg-surface-dark-800"
     >
-      <div className="flex flex-1 flex-col p-5" dir="rtl" style={{ fontFamily: "'Cairo', sans-serif" }}>
+      <div className="flex flex-1 flex-col p-5" dir="rtl" style={{ fontFamily: "'Rubik', sans-serif" }}>
         <div className="mb-3 flex flex-wrap gap-1.5">
           {article.tags.map((tag) => (
             <span
@@ -23,7 +24,7 @@ function ArticleCard({ article }) {
           ))}
         </div>
 
-        <h3 className="mb-2 font-display text-lg font-semibold text-surface-900 dark:text-surface-dark-50">
+        <h3 className="mb-2 font-arabic text-lg font-semibold text-surface-900 dark:text-surface-dark-50">
           {article.title}
         </h3>
 
@@ -44,7 +45,7 @@ function ArticleCard({ article }) {
           className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary-600 transition-colors hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
         >
           اقرأ المقال
-          <FiArrowLeft size={14} className="transition-transform group-hover:-translate-x-0.5" />
+          <FaBook size={14} className="transition-transform group-hover:-translate-x-0.5" />
         </Link>
       </div>
     </motion.article>

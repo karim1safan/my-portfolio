@@ -1,8 +1,9 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "motion/react";
-import { articles } from "../../data/articles.js";
+import { articles } from "../../utils/articles.js";
 import ArticleRenderer from "../../utils/articleRenderer";
 import { FiArrowRight, FiClock, FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import { FaBook } from "react-icons/fa6";
 
 function ArticleDetail() {
   const { id } = useParams();
@@ -11,8 +12,8 @@ function ArticleDetail() {
 
   if (!article) {
     return (
-      <section className="flex min-h-[60vh] flex-col items-center justify-center px-4 py-20 text-center" dir="rtl" style={{ fontFamily: "'Cairo', sans-serif" }}>
-        <h1 className="mb-4 font-display text-3xl font-bold text-surface-900 dark:text-surface-dark-50">
+      <section className="article-rtl flex min-h-[60vh] flex-col items-center justify-center px-4 py-20 text-center" dir="rtl" style={{ fontFamily: "'Rubik', sans-serif" }}>
+        <h1 className="mb-4 text-3xl font-bold text-surface-900 dark:text-surface-dark-50">
           المقال غير موجود
         </h1>
         <p className="mb-6 text-surface-600 dark:text-surface-dark-200">
@@ -23,7 +24,7 @@ function ArticleDetail() {
           className="inline-flex items-center gap-2 rounded-full bg-primary-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600"
         >
           العودة للمقالات
-          <FiArrowRight size={16} />
+          <FaBook size={16} />
         </Link>
       </section>
     );
@@ -36,7 +37,7 @@ function ArticleDetail() {
     <motion.article
       className="py-20"
       dir="rtl"
-      style={{ fontFamily: "'Cairo', sans-serif" }}
+      style={{ fontFamily: "'Rubik', sans-serif" }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
@@ -46,8 +47,8 @@ function ArticleDetail() {
           to="/articles"
           className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-surface-600 transition-colors hover:text-surface-900 dark:text-surface-dark-300 dark:hover:text-surface-dark-50"
         >
-          جميع المقالات
           <FiArrowRight size={14} />
+          جميع المقالات
         </Link>
 
         <header className="mb-10">
@@ -62,7 +63,7 @@ function ArticleDetail() {
             ))}
           </div>
 
-          <h1 className="mb-4 font-display text-3xl font-bold tracking-tight text-surface-900 dark:text-surface-dark-50 sm:text-4xl">
+          <h1 className="article-rtl mb-4 text-3xl font-bold tracking-tight text-surface-900 dark:text-surface-dark-50 sm:text-4xl font-arabic">
             {article.title}
           </h1>
 

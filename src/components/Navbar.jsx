@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "../context/ThemeContext";
 import {
@@ -13,9 +14,10 @@ import {
   FiFolder,
   FiAward,
   FiMail,
+  FiBookOpen,
 } from "react-icons/fi";
 
-const navLinks = [
+const homeLinks = [
   { label: "Home", href: "#home", icon: FiHome },
   { label: "About", href: "#about", icon: FiUser },
   { label: "Process", href: "#services", icon: FiTool },
@@ -42,6 +44,14 @@ const mobileMenuVariants = {
 function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const isHome = location.pathname === "/";
+
+  const navLinks = isHome
+    ? [...homeLinks, { label: "Articles", href: "/articles", icon: FiBookOpen }]
+    : [{ label: "Home", href: "/", icon: FiHome }, { label: "Articles", href: "/articles", icon: FiBookOpen }];
 
   useEffect(() => {
     if (!mobileOpen) return;
@@ -52,11 +62,31 @@ function Navbar() {
     return () => document.removeEventListener("keydown", handleEscape);
   }, [mobileOpen]);
 
+  const handleNavClick = (e, href) => {
+    if (href.startsWith("#")) {
+      if (!isHome) {
+        navigate(href);
+        return;
+      }
+      e.preventDefault();
+      const el = document.querySelector(href);
+      el?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      if (href === location.pathname) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        navigate(href);
+      }
+    }
+    setMobileOpen(false);
+  };
+
   return (
     <nav className="sticky top-0 z-50 border-b border-surface-200 bg-surface-50/85 backdrop-blur-lg dark:border-surface-dark-500/20 dark:bg-surface-dark-900/85">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <a
-          href="#home"
+          href="/"
+          onClick={(e) => handleNavClick(e, "/")}
           className="font-display text-xl font-bold text-surface-900 dark:text-surface-dark-50"
         >
           KS
@@ -69,6 +99,7 @@ function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium text-surface-700 transition-colors hover:bg-surface-200 hover:text-surface-900 dark:text-surface-dark-200 dark:hover:bg-surface-dark-500 dark:hover:text-surface-dark-50"
                 >
                   <Icon size={14} />
@@ -134,7 +165,7 @@ function Navbar() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      onClick={() => setMobileOpen(false)}
+                      onClick={(e) => handleNavClick(e, link.href)}
                       className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-surface-700 transition-colors hover:bg-surface-200 dark:text-surface-dark-200 dark:hover:bg-surface-dark-500"
                     >
                       <Icon size={16} />

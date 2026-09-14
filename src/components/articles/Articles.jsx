@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import SectionTitle from "../SectionTitle";
-import { articles } from "../../data/articles.js";
+import { articles } from "../../utils/articles.js";
 import ArticleCard from "./ArticleCard";
 
 const container = {
@@ -21,7 +21,7 @@ function Articles() {
 
   return (
     <section className="py-20" dir="rtl">
-      <div className="mx-auto max-w-6xl px-4" style={{ fontFamily: "'Cairo', sans-serif" }}>
+      <div className="mx-auto max-w-6xl px-4 font-arabic">
         <SectionTitle subtitle="مدونتي" title="المقالات" />
 
         {articles.length === 0 ? (

@@ -5,8 +5,6 @@ import { skills } from "../data/skills";
 
 function SkillBar({ skill, index }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const shouldReduceMotion = useReducedMotion();
 
   return (
     <div
@@ -26,21 +24,6 @@ function SkillBar({ skill, index }) {
           <h4 className="font-display text-sm font-semibold text-surface-900 dark:text-surface-dark-50">
             {skill.title}
           </h4>
-          <span className="text-xs font-medium text-surface-500 dark:text-surface-dark-300">
-            {skill.level}%
-          </span>
-        </div>
-        <div className="h-2 overflow-hidden rounded-full bg-surface-100 dark:bg-surface-dark-700">
-          <motion.div
-            className="h-full rounded-full bg-gradient-to-r from-primary-400 to-primary-600 dark:from-primary-500 dark:to-primary-400"
-            initial={shouldReduceMotion ? { width: `${skill.level}%` } : { width: 0 }}
-            animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
-            transition={{
-              duration: shouldReduceMotion ? 0 : 0.8,
-              delay: shouldReduceMotion ? 0 : index * 0.05,
-              ease: "easeOut",
-            }}
-          />
         </div>
       </div>
     </div>

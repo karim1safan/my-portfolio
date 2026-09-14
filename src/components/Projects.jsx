@@ -49,11 +49,7 @@ function Projects() {
                   <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
                   <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
                   <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
-                  <div className="ml-2 flex-1 truncate rounded-md bg-white px-2.5 py-1 text-[10px] text-surface-400 dark:bg-surface-dark-600 dark:text-surface-dark-300">
-                    {project.liveUrl && project.liveUrl !== "#"
-                      ? project.liveUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")
-                      : "localhost:3000"}
-                  </div>
+                  
                 </div>
                 <div className="aspect-video overflow-hidden">
                   <img

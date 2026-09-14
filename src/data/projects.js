@@ -6,6 +6,7 @@ import GithubApp from "../assets/projects/GithubApp.png";
 import bondi from "../assets/projects/bondi.png";
 import leon from "../assets/projects/Leon.png";
 import shoppingCart from "../assets/projects/shopping-cart.png";
+import FoodAPI from "../assets/projects/FoodAPI.jpg";
 
 export const projects = [
   {
@@ -56,6 +57,14 @@ export const projects = [
     technologies: ["HTML5", "CSS3", "JavaScript", "FontAwesome"],
     liveUrl: "https://shopping-cart-neon-tau-50.vercel.app/",
     githubUrl: "https://github.com/karim1safan/shopping-cart",
+  },
+  {
+    title: "Food App API (Backend Project)",
+    thumbnail: FoodAPI,
+    description: "",
+    technologies: ["Node.js", "Express", "MongoDB", "JWT"],
+    liveUrl: "#",
+    githubUrl: "https://github.com/karim1safan/food-app-api",
   },
   {
     title: "Bondi Template Design",

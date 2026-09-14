@@ -69,11 +69,11 @@ function About() {
                 </h3>
                 <div className="relative border-l-2 border-primary-200 pl-6 dark:border-primary-500/30">
                   {education.map((item) => (
-                    <div key={item.id} className="relative mb-6 last:mb-0 ml-3">
+                    <div key={item.id} className="relative mb-6 last:mb-0 ml-4">
                       <div className="absolute -left-[31px] flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/10 dark:text-primary-400">
                         <PiGraduationCap size={16} />
                       </div>
-                      <div>
+                      <div className="ml-3">
                         <h4 className="font-display text-base font-semibold text-surface-900 dark:text-surface-dark-50">
                           {item.degree}
                         </h4>
