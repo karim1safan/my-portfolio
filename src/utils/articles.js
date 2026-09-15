@@ -4,6 +4,24 @@ const modules = import.meta.glob("../content/articles/*.md", {
   eager: true,
 });
 
+const images = import.meta.glob("../content/articles/*.png", {
+  query: "?url",
+  import: "default",
+  eager: true,
+});
+
+function resolveImagePaths(content) {
+  return content.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/g,
+    (match, alt, src) => {
+      if (src.startsWith("http")) return match;
+      const filename = src.split("/").pop();
+      const key = Object.keys(images).find((k) => k.endsWith(`/${filename}`));
+      return `![${alt}](${key ? images[key] : src})`;
+    }
+  );
+}
+
 function parseFrontmatter(raw) {
   const match = raw.match(/^\s*---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
   if (!match) return { meta: {}, content: raw };
@@ -31,7 +49,7 @@ function parseFrontmatter(raw) {
     meta[key] = value;
   }
 
-  return { meta, content };
+  return { meta, content: resolveImagePaths(content) };
 }
 
 export const articles = Object.values(modules)
