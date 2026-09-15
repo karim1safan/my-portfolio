@@ -2,7 +2,7 @@
 id: software-engineer-process
 title: "Software Engineering Process: Waterfall and Agile"
 date: 15 sep 2026
-tags: ["SDLC", Software Engineering]
+tags: ["SDLC", "Software Engineering"]
 readingTime: "15 دقيقة قراءة"
 excerpt: "نظرة مبسطة على منهجيات تطوير البرمجيات، وأدوار مهندس البرمجيات، ودورة العمل في Waterfall وAgile."
 ---
